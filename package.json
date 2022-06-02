@@ -1,5 +1,6 @@
 {
-  "name": "herproj",
+  "homepage": "https://xxtalxx.github.io/Weather-App/",
+  "name": "weather-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
