@@ -1,0 +1,158 @@
+.header {
+    position: fixed;
+    background-color: lightcyan;
+    border-bottom: 2px solid lightskyblue;
+    width: 100%;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+@media (max-width: 56rem) {
+  .header {
+    position: relative;
+  }
+}
+
+.toggle {
+    --width: 110px;
+    --height: calc(var(--width) / 3);
+
+    position: relative;
+    display: inline-block;
+    width: var(--width);
+    height: var(--height);
+    cursor: pointer;
+  }
+
+  .toggle input {
+    display: none;
+  }
+
+  .toggle .slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(237, 252, 107, 0.514);
+    transition: all 0.4s ease-in-out;
+    overflow: hidden;
+    border: 3px solid rgb(247, 227, 162);
+  }
+
+
+  .toggle .slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--height));
+    height: calc(var(--height));
+    background-image: linear-gradient(to right,rgba(214, 226, 53, 0.589),rgba(224, 166, 40, 0.678));
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease-in-out;
+    transform: skew(-20deg);
+  }
+
+  .toggle input:checked+.slider {
+    background-color: #65dbebbb;
+    border: 3px solid lightskyblue;
+    width: 150px;
+  }
+
+  .toggle input:checked+.slider::before {
+    transform: translateX(calc(155px - var(--height))) skew(20deg);
+    background-image: linear-gradient(to right,rgba(120, 241, 215, 0.521),rgba(21, 90, 168, 0.521));     
+  }
+
+  .toggle .labels {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    font-family: sans-serif;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .labels::after {
+    content: attr(data-off);
+    position: absolute;
+    right: 5px;
+    color: #4d4d4d;
+    opacity: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle .labels::before {
+    content: attr(data-on);
+    position: absolute;
+    left: 5px;
+    color: #4d4d4d;
+    opacity: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .toggle input:checked~.labels::after {
+    opacity: 0;
+  }
+
+  .toggle input:checked~.labels::before {
+    opacity: 1;
+  }
+
+.units {
+  cursor: pointer;
+  --width: 37px;
+  --height: calc(var(--width) / 1);
+  position: relative;
+  display: inline-block;
+  left: 75%;
+  vertical-align: text-bottom;
+  width: var(--width);
+  height: var(--height);
+  border: 1px solid slateblue;
+  border-radius: 100%;
+  background-image: radial-gradient(circle,#8c1ce7, rgb(15, 209, 216));
+}
+
+.units .labels {
+  font-size: 2rem;
+  vertical-align: text-bottom;
+  font-family: sans-serif;
+  position: absolute;
+  color: rgb(36, 252, 234);
+  font-weight: bold;
+}
+
+.units input {
+  display: none;
+}
+
+.units .labels::before {
+  content: attr(data-on);
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+  position: absolute;
+
+}
+
+.units .labels::after {
+  transition: all 0.4s ease-in-out;
+  content: attr(data-off);
+  opacity: 1;
+}
+
+.units input:checked~.labels::after {
+  opacity: 0;
+}
+
+.units input:checked~.labels::before {
+  opacity: 1;
+}

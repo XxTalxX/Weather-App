@@ -1,0 +1,13 @@
+<header class="header">
+  <nav class="main-nav">
+    <label class="toggle">
+        <input type="checkbox" #toggle (change)="onToggleChange($event)">
+        <span class="slider"></span>
+        <span class="labels" data-on="Favorites" data-off="Main"></span>
+      </label>
+      <label class="units">
+        <input type="checkbox" (change)="onUnitsChange($event)">
+        <span class="labels" data-on="°F" data-off="℃"></span>
+      </label>
+    </nav>
+</header>

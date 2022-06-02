@@ -1,0 +1,25 @@
+<div class="city-display">
+    <nav class="city-display-header">
+        <ul *ngIf="!errorMessage" class="city-display-header-items">
+            <li class=city-name> {{ weather.region }} </li>
+            <label class="favorite-button" [style.background-color]="isChecked ? 'rgba(255, 239, 21, 0.993)' : 'transparent'"
+            [style.transition]="'all 0.4s ease-in-out'" [style.opacity]="isDisabled ? '0.5' : '1'">
+                <input [checked]="isChecked" (change)="isChecked = !isChecked" [disabled]="isDisabled" hightlight type="checkbox">
+                 <span class="labels" data-on="Added to Favorites" data-off="Add to Favorites"></span></label>
+             <li [style.color]="isChecked? 'rgba(255, 239, 21, 0.993)' : 'black'"
+             [style.transition]="'all 0.4s ease-in-out'"  class="hearth-icon" [style.opacity]="isDisabled ? '0.5' : '1'"> &hearts; </li> 
+            <li *ngIf="!isLoading" class="city-degrees"> {{ weather.currentConditions.temp | units }}°</li>
+        </ul>
+    </nav>
+    <ng-template [ngIf]="isLoading">
+        <div style="text-align: center;" class="loader"></div>
+    </ng-template>
+    <div *ngIf="errorMessage" class="alert">
+            <p>{{ errorMessage.error }}</p>
+        </div>
+    <div *ngIf="!isLoading && !errorMessage" class="weather-title">
+        {{ weather.currentConditions.comment }}
+    </div>
+        <app-days-list style="height: 100%"></app-days-list>
+</div>
+

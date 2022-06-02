@@ -1,0 +1,18 @@
+.main {
+    height: 90%;
+}
+
+.rotate {
+    display: none;
+}
+
+@media (max-width: 40rem) {
+
+    .rotate {
+        display: block;
+        transform: translateY(40%);
+    }
+    .main {
+        display: none;
+    }
+}

@@ -1,0 +1,23 @@
+<ul [@listAnimation]="weather_days.length" @fadeAnimation *ngIf="weather_days" class="days-list">
+    <li *ngFor="let day of weather_days | slice:1:6; let dayIndex = index;">
+        <table>
+            <tr>
+                <td> <img [src]=day.iconURL> </td>
+            </tr>
+            <tr>
+                <td>
+                    <canvas id="temperature-line" #temperatureLine></canvas>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ day.min_temp | units }}° - {{ day.max_temp | units }}°
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ day.day }}
+                </td>
+            </tr>
+        </table>
+</ul>

@@ -1,0 +1,8 @@
+<div class="search-input">
+    <span class="search-icon">🔎</span>
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <input type="text" id="search-bar" class="form-control" name="search-city" placeholder="Search for a city.." formControlName="citysearch">
+    <span class="warning" *ngIf="!searchForm.valid && searchForm.touched" style="color: red; font-weight: bold;">Enter a valid city name</span>
+    </form> 
+</div>
+

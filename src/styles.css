@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    height: 100%;
+    padding-top: 45px;
+    overflow-y: scroll;
+}
+
+html {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+@media (max-width: 56rem) {
+    body{
+         padding-top: 0px;
+    }
+}

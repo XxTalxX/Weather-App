@@ -1,0 +1,31 @@
+<ng-template [ngIf]="favoriteWeathers.length == 0">
+    <div style="text-align: center; position: absolute; top: 25%; left: 35%;">
+    <h3 style="font-size: 5rem;">No Favorites</h3>
+</div>
+</ng-template>
+<button *ngIf="favoriteWeathers.length > 0" class="remove-all" (click)="removeAll()"> Remove All </button> 
+    <ul class="favorites-display">
+        <li *ngFor="let weather of favoriteWeathers; let weatherIndex = index;" (click)="showWeather(weather, weatherIndex)">
+            <span class="remove-favorite" (click)="removeFavorite(weatherIndex)"> ❌ </span>
+            <table>
+                <tr>
+                    <td> {{ weather.region }} </td>
+                </tr>
+                <tr>
+                    <td>
+                         <img [src]="weather.currentConditions.iconURL">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         {{ weather.currentConditions.comment }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ weather.currentConditions.temp | units }}°
+                    </td>
+                </tr>
+            </table>
+        </li>
+    </ul>
