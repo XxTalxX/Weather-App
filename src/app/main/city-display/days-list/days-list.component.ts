@@ -58,8 +58,10 @@ export class DaysListComponent implements OnInit,OnDestroy, AfterViewInit {
   drawTemperatureLine() {
     const maximumTemperature: number = Math.max(...this.weather_days!.slice(0,6)
     .map((temp) => ((temp.max_temp.c + temp.min_temp.c)/2)));
-    const canvasHeight: number = 135;
-    const lineScale: number = canvasHeight / maximumTemperature; // 5.6
+    const minimumTemperature: number = Math.min(...this.weather_days!.slice(0,6)
+    .map((temp) => ((temp.max_temp.c + temp.min_temp.c)/2)));
+    const canvasHeight: number = 145;
+    const lineScale: number = canvasHeight / (maximumTemperature - minimumTemperature);
     this.tempLines.forEach((line, index) => {
       this.drawingContext = line.nativeElement.getContext('2d')!;
       this.drawingContext.beginPath();
@@ -71,8 +73,8 @@ export class DaysListComponent implements OnInit,OnDestroy, AfterViewInit {
       this.drawingContext.strokeStyle = lineGradient;
       let currentTemperature: number = (this.weather_days![index].max_temp.c + this.weather_days![index].min_temp.c)/2;
       let nextTemperature: number = (this.weather_days![index+1].max_temp.c + this.weather_days![index+1].min_temp.c)/2;      
-      this.drawingContext.moveTo(0,90 - (canvasHeight - lineScale*currentTemperature)*1.5);
-      this.drawingContext.lineTo(310,90 - (canvasHeight - lineScale*nextTemperature)*1.5);
+      this.drawingContext.moveTo(0,lineScale*(maximumTemperature-currentTemperature));
+      this.drawingContext.lineTo(310,lineScale*(maximumTemperature-nextTemperature));
       this.drawingContext.stroke();
    })
   }
